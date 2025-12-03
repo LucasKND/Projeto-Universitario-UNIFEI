@@ -813,6 +813,7 @@ main {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.4s ease, transform 0.4s ease;
+    text-align: left;
 }
 
 .accordion-subtitle {
@@ -825,6 +826,7 @@ main {
     color: var(--cinza-metal);
     line-height: 1.6;
     transition: color 0.4s ease;
+    text-align: justify;
 }
 
 .accordion-icon {
@@ -1135,6 +1137,60 @@ footer a {
     font-weight: 600;
 }
 
+/* Video Modal */
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    animation: fadeIn 0.3s ease;
+}
+
+.video-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: var(--branco);
+    font-size: 40px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10000;
+}
+
+.video-modal-close:hover {
+    color: var(--cinza-claro);
+}
+
+#modalVideo {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    border-radius: 4px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @media (max-width: 600px) {
     .hero h1 {
         font-size: 2.2rem;
@@ -1151,5 +1207,10 @@ footer a {
     .accordion-header h2 {
         font-size: 0.95rem;
         letter-spacing: 0.08em;
+    }
+    
+    .video-modal-close {
+        top: -30px;
+        font-size: 30px;
     }
 }

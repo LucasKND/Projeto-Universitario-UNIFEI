@@ -83,51 +83,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sections.forEach((section) => observer.observe(section));
 
-    // Video grid play/pause functionality
+    // Video modal functionality
+    const videoModal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalClose = document.querySelector('.video-modal-close');
+    
     const videoItems = document.querySelectorAll(".video-item");
     
     videoItems.forEach((item) => {
         const video = item.querySelector("video");
-        const overlay = item.querySelector(".play-overlay");
         
-        if (video && overlay) {
-            // Click to play/pause
+        if (video) {
+            // Click to open modal
             item.addEventListener("click", () => {
-                if (video.paused) {
-                    // Pause all other videos first
-                    document.querySelectorAll(".video-item video").forEach((v) => {
-                        if (v !== video) {
-                            v.pause();
-                            v.closest(".video-item").classList.remove("playing");
-                        }
-                    });
-                    video.play();
-                    item.classList.add("playing");
-                } else {
-                    video.pause();
-                    item.classList.remove("playing");
-                }
-            });
-            
-            // When video ends, show overlay again
-            video.addEventListener("ended", () => {
-                item.classList.remove("playing");
+                const videoSrc = video.getAttribute('src');
+                modalVideo.setAttribute('src', videoSrc);
+                videoModal.classList.add('active');
+                modalVideo.play();
             });
             
             // Hover preview - play on hover (muted)
             item.addEventListener("mouseenter", () => {
-                if (video.paused && !item.classList.contains("playing")) {
-                    video.currentTime = 0;
+                if (video.paused) {
                     video.play().catch(() => {});
                 }
             });
             
             item.addEventListener("mouseleave", () => {
-                if (!item.classList.contains("playing")) {
-                    video.pause();
-                    video.currentTime = 0;
-                }
+                video.pause();
+                video.currentTime = 0;
             });
+        }
+    });
+    
+    // Close modal
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+            modalVideo.pause();
+            modalVideo.setAttribute('src', '');
+        });
+    }
+    
+    // Close modal on background click
+    if (videoModal) {
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                modalVideo.pause();
+                modalVideo.setAttribute('src', '');
+            }
+        });
+    }
+    
+    // Close modal with ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal && videoModal.classList.contains('active')) {
+            videoModal.classList.remove('active');
+            modalVideo.pause();
+            modalVideo.setAttribute('src', '');
         }
     });
 });

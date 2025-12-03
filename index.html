@@ -71,7 +71,7 @@ Mais que um diploma, você ganha uma identidade: a de fazer parte de uma comunid
                 <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-content">
-            <p>A Constante de Planck (h), uma das constantes fundamentais da Física Quântica, é essencial para descrever fenômenos em escala atômica e está diretamente relacionada à energia dos fótons. Neste trabalho, utilizamos LEDs (diodos emissores de luz) como fontes de luz monocromática, explorando a relação entre a tensão de corte (V_F) e o comprimento de onda (\lambda) para calcular h. A abordagem experimental dividiu-se em duas etapas principais: caracterização elétrica dos LEDs e análise de difração da luz emitida.</p>
+            <p>A Constante de Planck (h), uma das constantes fundamentais da Física Quântica, é essencial para descrever fenômenos em escala atômica e está diretamente relacionada à energia dos fótons. Neste trabalho, utilizamos LEDs (diodos emissores de luz) como fontes de luz monocromática, explorando a relação entre a tensão de corte (V_F) e o comprimento de onda λ para calcular h. A abordagem experimental dividiu-se em duas etapas principais: caracterização elétrica dos LEDs e análise de difração da luz emitida.</p>
 
             <div class="grid two">
                 <figure>
@@ -142,6 +142,7 @@ Mais que um diploma, você ganha uma identidade: a de fazer parte de uma comunid
             </table>
 
             <h3>Resultados Principais</h3>
+            <p style="text-align: justify; margin: 1.5rem 0;">Para a obtenção dos resultados apresentados a seguir, foi necessária a utilização do software Scidavis, bem como a realização dos cálculos do comprimento de onda λ e da constante de Planck.</p>
             <ul>
                 <li><strong>Linearização LED Amarelo:</strong> a = 354,2 ± 37,5 mA/V; b = −668,6 ± 73,8 mA.</li>
                 <li><strong>Linearização LED Verde:</strong> a = 121,3 ± 5,5 mA/V; b = −361,2 ± 17,7 mA.</li>
@@ -165,25 +166,21 @@ Mais que um diploma, você ganha uma identidade: a de fazer parte de uma comunid
 
             <h3>Fórmulas Utilizadas</h3>
             <div class="grid two">
-                <figure>
-                    <img src="assets/image.png" alt="Fórmula da Constante de Planck" style="background: white; padding: 2rem;">
-                
-                </figure>
-                <figure>
-                    <img src="assets/image2.png" alt="Fórmula do Comprimento de Onda" style="background: white; padding: 2rem;">
-                
-                </figure>
+                <p style="font-size: 1.1rem; text-align: center; margin: 1rem 0;">h = e · V<sub>limiar</sub> · λ / c</p>
+                <p style="font-size: 1.1rem; text-align: center; margin: 1rem 0;">λ = D · x / √(a² + x²)</p>
             </div>
             </div>
         </section>
 
         <section class="accordion" id="experimento-pendulo">
             <button class="accordion-header">
-                <h2>Experimento 2 &mdash; Pêndulo Simples e MHS</h2>
+                <div class="accordion-title-wrapper">
+                    <h2>Experimento 2 &mdash; Pêndulo Simples e MHS</h2>
+                    <p class="accordion-subtitle">A segunda etapa investigou o movimento harmônico simples de um pêndulo de diferentes comprimentos. Foram registradas séries temporais manuais e com apoio do software Tracker®, permitindo comparar métodos de determinação do período e da aceleração da gravidade.</p>
+                </div>
                 <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-content">
-            <p>A segunda etapa investigou o movimento harmônico simples de um pêndulo de diferentes comprimentos. Foram registradas séries temporais manuais e com apoio do software Tracker®, permitindo comparar métodos de determinação do período e da aceleração da gravidade.</p>
 
             <div class="metricas">
                 <div class="metrica">
@@ -362,5 +359,13 @@ Formamos profissionais que já estão criando o futuro. E começam semeando-o.</
             <p class="footer-copy">©2025 BCTec UNIFEI. Todos os direitos reservados. Projeto de Física Experimental.</p>
         </div>
     </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-modal-close">&times;</span>
+            <video id="modalVideo" controls></video>
+        </div>
+    </div>
 </body>
 </html>
