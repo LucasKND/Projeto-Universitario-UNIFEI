@@ -82,4 +82,52 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     sections.forEach((section) => observer.observe(section));
+
+    // Video grid play/pause functionality
+    const videoItems = document.querySelectorAll(".video-item");
+    
+    videoItems.forEach((item) => {
+        const video = item.querySelector("video");
+        const overlay = item.querySelector(".play-overlay");
+        
+        if (video && overlay) {
+            // Click to play/pause
+            item.addEventListener("click", () => {
+                if (video.paused) {
+                    // Pause all other videos first
+                    document.querySelectorAll(".video-item video").forEach((v) => {
+                        if (v !== video) {
+                            v.pause();
+                            v.closest(".video-item").classList.remove("playing");
+                        }
+                    });
+                    video.play();
+                    item.classList.add("playing");
+                } else {
+                    video.pause();
+                    item.classList.remove("playing");
+                }
+            });
+            
+            // When video ends, show overlay again
+            video.addEventListener("ended", () => {
+                item.classList.remove("playing");
+            });
+            
+            // Hover preview - play on hover (muted)
+            item.addEventListener("mouseenter", () => {
+                if (video.paused && !item.classList.contains("playing")) {
+                    video.currentTime = 0;
+                    video.play().catch(() => {});
+                }
+            });
+            
+            item.addEventListener("mouseleave", () => {
+                if (!item.classList.contains("playing")) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            });
+        }
+    });
 });

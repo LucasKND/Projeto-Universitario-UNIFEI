@@ -551,14 +551,14 @@ main {
     background: var(--branco);
 }
 
-/* Photo Grid - Modern Masonry */
+/* Photo Grid - Creative Masonry */
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 240px);
-    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 6px;
     padding: 4rem 2rem;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     background: transparent;
 }
@@ -570,15 +570,56 @@ main {
     box-shadow: none;
 }
 
-.photo-item img {
+/* Tall items span 2 rows */
+.photo-item.item-tall {
+    grid-row: span 2;
+}
+
+/* Wide items span 2 columns */
+.photo-item.item-wide {
+    grid-column: span 2;
+}
+
+/* Hero/Featured item - full width, taller */
+.photo-item.item-hero {
+    grid-column: 1 / -1;
+    grid-row: span 2;
+}
+
+.photo-item.item-hero .hero-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    color: var(--branco);
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.photo-item.item-hero:hover .hero-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo-item img,
+.photo-item video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
-    filter: brightness(0.95);
+    filter: brightness(0.92);
 }
 
-.photo-item:hover img {
+.photo-item:hover img,
+.photo-item:hover video {
     transform: scale(1.08);
     filter: brightness(1);
 }
@@ -591,65 +632,74 @@ main {
     opacity: 0;
     transition: opacity 0.5s ease;
     border-radius: 2px;
+    pointer-events: none;
 }
 
 .photo-item:hover::after {
     opacity: 1;
 }
 
-/* Grid Layout - First item large */
-.photo-item:first-child {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
+/* Video play overlay */
+.video-item .play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    transition: opacity 0.4s ease, background 0.4s ease;
+    z-index: 2;
+    cursor: pointer;
 }
 
-.photo-item:nth-child(2) {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
+.video-item .play-overlay span {
+    font-size: 2.5rem;
+    color: var(--branco);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
 }
 
-.photo-item:nth-child(3) {
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
+.video-item:hover .play-overlay {
+    background: rgba(0, 0, 0, 0.15);
 }
 
-.photo-item:nth-child(4) {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+.video-item:hover .play-overlay span {
+    transform: scale(1.2);
 }
 
-.photo-item:nth-child(5) {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
+.video-item.playing .play-overlay {
+    opacity: 0;
+    pointer-events: none;
 }
 
-.photo-item:nth-child(6) {
-    display: none;
+@media (max-width: 900px) {
+    .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 180px;
+        gap: 4px;
+        padding: 3rem 1rem;
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 180px);
-        gap: 8px;
+        grid-auto-rows: 150px;
+        gap: 4px;
         padding: 2rem 1rem;
     }
     
-    .photo-item:first-child {
-        grid-column: 1 / 3;
-        grid-row: 1 / 2;
+    .photo-item.item-wide {
+        grid-column: span 2;
     }
     
-    .photo-item:nth-child(2),
-    .photo-item:nth-child(3),
-    .photo-item:nth-child(4),
-    .photo-item:nth-child(5) {
-        grid-column: auto;
-        grid-row: auto;
+    .photo-item.item-tall {
+        grid-row: span 2;
     }
     
-    .photo-item:nth-child(6) {
-        display: block;
+    .video-item .play-overlay span {
+        font-size: 1.8rem;
     }
 }
 
