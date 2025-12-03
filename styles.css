@@ -280,19 +280,22 @@ nav a.ativo::after {
 .bctec-container {
     display: flex;
     align-items: center;
-    gap: 5rem;
-    max-width: 1100px;
+    gap: 4rem;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 .bctec-image {
-    flex: 0 0 420px;
-    max-width: 420px;
+    flex: 0 0 600px;
+    max-width: 600px;
+    min-height: 600px;
 }
 
 .bctec-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    min-height: 600px;
+    object-fit: cover;
     border-radius: 4px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
@@ -307,36 +310,74 @@ nav a.ativo::after {
     flex: 1;
 }
 
+.bctec-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--azul);
+    margin-bottom: 1rem;
+    padding: 0.4rem 1rem;
+    background: rgba(26, 90, 138, 0.1);
+    border-radius: 2px;
+}
+
 .bctec-text h2 {
     font-family: "Poppins", "Segoe UI", sans-serif;
-    font-size: 2.4rem;
+    font-size: 2.8rem;
     font-weight: 700;
     color: var(--cinza-escuro);
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 2rem 0;
     position: relative;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
 }
 
 .bctec-text h2::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background: var(--azul);
-    border-radius: 0;
+    display: none;
 }
 
 .bctec-text p {
     font-size: 1.05rem;
-    line-height: 1.85;
+    line-height: 1.9;
     color: var(--cinza-metal);
     margin: 1.25rem 0;
 }
 
 .bctec-text p:first-of-type {
-    margin-top: 2.5rem;
+    margin-top: 0;
+}
+
+.bctec-highlight {
+    font-size: 1.15rem;
+    color: var(--cinza-escuro);
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+.bctec-text strong {
+    color: var(--cinza-escuro);
+    font-weight: 600;
+}
+
+.bctec-quote {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    border-left: 3px solid var(--azul);
+    background: transparent;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--cinza-escuro);
+    letter-spacing: -0.01em;
+}
+
+.bctec-cta {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    color: var(--cinza-escuro);
 }
 
 @media (max-width: 900px) {
@@ -376,7 +417,7 @@ nav a.ativo::after {
 }
 
 main {
-    padding: 4rem 2rem 5rem;
+    padding: 2rem 2rem 5rem;
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
