@@ -2,6 +2,7 @@
 
 > Website apresentando experimentos de física realizados no Bacharelado em Ciência e Tecnologia da UNIFEI.
 
+https://lucasknd.github.io/Projeto-Universitario-UNIFEI/
 
 ## 🎯 Sobre o Projeto
 
@@ -198,9 +199,9 @@ Funcionalidades JavaScript:
 
 ---
 
-## 👩‍🔬 Autora
+## 👩‍🔬 Autor
 
-**Kamilla Evelyn de Jesus**
+**Lucas Veroneze**
 
 ---
 
